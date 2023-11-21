@@ -1,10 +1,10 @@
-mod sub;
+use rust_linecount::algorithm;
 use std::io::{stdin, BufReader};
 
 fn main() {
     let mut reader = BufReader::new(stdin());
 
-    let counter = sub::line_count(&mut reader);
+    let counter = algorithm::line_count(&mut reader);
 
     println!("{}", counter);
 }
