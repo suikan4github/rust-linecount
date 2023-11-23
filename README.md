@@ -9,9 +9,9 @@ rust-ccに比べると、二つの点で異なっています。
 - その関数をlib.rsに移したこと
 
 # 関数化
-line_count()関数は、std::io::BufRead traitを持つ型への参照を引数として受け取ります。
-BufReadはstd::io::BufReader型構造体も使っているため、main()から呼ぶときにBufReader構造体
-への参照を渡すことができます。
+line_count()関数は、`std::io::BufRead` トレイトを持つ型への参照を引数として受け取ります。
+`std::io::BufReader`型構造体はBufRead トレイトを持っているため、main()からline_count()関数を呼ぶ
+呼ぶときにBufReader構造体への参照を渡すことができます。
 
 line_count()関数内部では特にエラー処理は行っていません。単に行数数えて返します。
 
@@ -36,20 +36,20 @@ use rust_linecount::algorithm;
 パッケージ名はcargo.tomlの中で宣言されています。このプロジェクトの場合、パッケージ名は"rust-linecount"ですが、
 ハイフンはアンダースコアに変換されるためパッケージ名はrust_linecountになります。
 
-# traitの可視性
-lib.rsの中でBufRead traitをフルパスでuseしています。
+# トレイトの可視性
+lib.rsの中でBufRead トレイトをフルパスでuseしています。
 
 ```Rust
 use std::io::BufRead;
 ```
 
-traitを使う場合にはそれをどのようなパスで呼ぶ場合もフルパス形式でuse宣言しなければなりません。
+トレイトを使う場合にはそれをどのようなパスで呼ぶ場合もフルパス形式でuse宣言しなければなりません。
 具体的には、以下のいずれのパスで使う場合も、先のフルパスのuse文が必要です。
 
 
-- ```BufRead```
-- io::BufRead
-- std::io::BufRead
+- `BufRead`
+- `io::BufRead`
+- `std::io::BufRead`
 
 「[The Rust Programming Language日本語版](https://doc.rust-jp.rs/book-ja/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#%E6%85%A3%E4%BE%8B%E3%81%AB%E5%BE%93%E3%81%A3%E3%81%9Fuse%E3%83%91%E3%82%B9%E3%82%92%E4%BD%9C%E3%82%8B)」には次のように書いてあります。
 
